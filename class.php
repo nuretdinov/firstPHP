@@ -1,16 +1,16 @@
 <?php
-class test{
+class calculate{
 
     //public, protected, private
     public $num1;
     public $num2;
     public $znak;
 
-    public function __construct($num1, $num2, $znak)
+    public function __construct(float $num1, float $num2, string $znak)
     {
-        $this->num1 = $num1;
-        $this->num2 = $num2;
-        $this->znak = $znak;
+         $this->num1 = $num1;
+         $this->num2 = $num2;
+         $this->znak = $znak;
     }
 
     //public, protected, private
@@ -22,12 +22,23 @@ class test{
             case "-":
                 return $this->num1 - $this->num2;
                 break;
+            default:
+                return null;
+                break;
         }
 
     }
 }
 
-$test1 = new test(5, 10, "-");
-print $test1->num1 . "\n";
-print $test1->num2 . "\n";
-print $test1->calc();
+class calculateResult
+{
+    public function output(calculate $calc) //$calc может быть только типа класс calculate!
+    {
+        $out=$calc->calc();
+        print $out;
+    }
+}
+$calculate1 = new calculate(5, 7, "+");
+
+$result = new calculateResult();
+$result->output($calculate1);
