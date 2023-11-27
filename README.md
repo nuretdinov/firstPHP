@@ -1,2 +1,1 @@
-# just testing
-studing 
+старые задания для 2ПИ ЛГУ
