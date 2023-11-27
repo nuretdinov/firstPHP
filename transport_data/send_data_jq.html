@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery data transport</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#data_send").click(function(){
+        var userName = $("#user_name").val();
+        var userEmail = $("#user_email").val();
+
+        $.ajax({
+          method: "GET",
+          url: "get_data.php",
+          success: function(dataFromServer){ $("#result").html(dataFromServer); }
+        });
+
+        data: {'user_name':userName, 'user_email':userEmail},
+
+        /*
+        $.get("get_data.php",{'user_name':userName, 'user_email':userEmail}, function(dataFromServer){
+          $("#result").html(dataFromServer);
+        });
+        */
+
+        /*
+        $.post("get_data.php",{'user_name':userName, 'user_email':userEmail}, function(dataFromServer){
+          $("#result").html(dataFromServer);
+        });
+         */
+
+      });
+    });
+  </script>
+</head><body>
+<form>
+  Введите ваше имя: <input type="text" id="user_name"><br>
+  Введите ваш email: <input type="email" id="user_email"><br>
+  <input type="button" value="отправить данные на сервер" id="data_send">
+</form>
+<div id="result"></div>
+</body></html>
+

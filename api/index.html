@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function getPort(){
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'port/?query=1', false);
+            xhr.send();
+
+            if (xhr.status != 200) {
+                // обработать ошибку
+                alert( xhr.status + ': ' + xhr.statusText );
+            } else {
+                //разбираем полученный json и выводим
+                let list = JSON.parse(xhr.response);
+                //вывод полученных данных из API в веб-страницу (в див)
+                document.getElementById('listPort').innerHTML = "Порт: " + list.name + " Код: " + list.code
+
+            }
+        }
+    </script>
+</head>
+<body>
+
+<form>
+    <input type="button" value="получить порты" onclick="getPort();">
+</form>
+
+<div id="listPort"></div>
+
+</body>
+
+</html>

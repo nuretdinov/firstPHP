@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Служба поддержки</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            //функция отправки на сервер заявки в техническую поддержку
+            $("#data_send").click(function () {
+                var userName = $("#user_name").val();
+                var userEmail = $("#user_email").val();
+                var userProblem = $("#user_problem").val();
+
+                const json = {"user_name": userName, "user_email": userEmail, "user_problem": userProblem};
+                jsonToServer = JSON.stringify(json)
+
+                $.ajax({
+                    method: "POST",
+                    url: "tech_support_save.php",
+                    data: jsonToServer,
+                    success: function (dataFromServer) {
+                        $("#result").html(dataFromServer);
+                    }
+                });
+            });
+
+            //функция получения данных о заявках с сервера
+            $("#data_receive").click(function () {
+                $.ajax({
+                    method: "GET",
+                    url: "tech_support_read.php",
+                    success: function (dataFromServer) {
+                        $("#result").html(dataFromServer);
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+<form>
+    Введите ваше имя: <input type="text" id="user_name"><br>
+    Введите ваш email: <input type="email" id="user_email"><br>
+    Кратко опишите вашу проблему: <input type="text" id="user_problem"><br>
+    <input type="button" value="отправить данные на сервер" id="data_send">
+</form>
+
+<a href="#" id="data_receive">Просмотр всех заявок</a>
+
+<div id="result"></div>
+
+</body>
+</html>
+

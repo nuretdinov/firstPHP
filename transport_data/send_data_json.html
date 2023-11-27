@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS data transport</title>
+  <script>
+    function send_data(){
+      let userName = document.getElementById('user_name').value;
+      let userEmail = document.getElementById('user_email').value;
+      let xhr = new XMLHttpRequest();
+      let url = new URL('http://localhost/transport_data/get_data.php');
+      const json = {"user_name": userName, "user_email": userEmail};
+      xhr.open('POST', url);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify(json));
+      xhr.onload = function() {
+        if (xhr.status != 200) {
+          document.getElementById('result').innerHTML = xhr.status + ': ' + xhr.statusText;}
+        else { document.getElementById('result').innerHTML = xhr.responseText; }
+      }
+    }
+  </script>
+</head><body>
+<form>
+  Введите ваше имя: <input type="text" id="user_name"><br>
+  Введите ваш email: <input type="email" id="user_email"><br>
+  <input type="button" value="отправить данные на сервер" onclick="send_data()">
+</form>
+<div id="result"></div>
+</body></html>
+

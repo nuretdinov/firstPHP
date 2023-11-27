@@ -1,0 +1,13 @@
+JSON и JavaScript
+https://developer.mozilla.org/ru/docs/Learn/JavaScript/Objects/JSON
+https://learn.javascript.ru/json
+
+JSON и PHP
+https://snipp.ru/php/json-php
+https://www.php.net/manual/ru/function.json-encode.php
+https://www.php.net/manual/ru/function.json-decode.php
+
+Асинхронные запросы (XMLHttpRequest) для обращения к API
+https://learn.javascript.ru/xmlhttprequest
+https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest
+

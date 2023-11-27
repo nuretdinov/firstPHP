@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS</title>
+</head>
+<body>
+
+<!-- программа на JS, выполняется автоматически при загрузке веб-страницы -->
+<script>
+    // здесь только JS, никаких просто тэгов или тектса (аналогочно как в PHP)
+    let num1;
+    let num2;
+    let znak;
+
+    //окно запроса данных от пользователя
+    num1 = prompt('Введите число 1')
+    num1 = parseInt(num1); // parseInt() - преобразует строку в число
+
+    num2 = parseInt(prompt('Введите число 2')) //сокращенный синтаксис
+
+    znak = prompt('Введите знак действия')
+
+    if(znak=="+") res = num1 + num2;
+    if(znak=="-") res = num1 - num2;
+    if(znak=="*") res = num1 * num2;
+    if(znak=="/") res = num1 / num2;
+
+    //окно вывода
+    alert(res)
+
+</script>
+
+</body>
+</html>

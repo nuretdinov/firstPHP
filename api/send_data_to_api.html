@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function reg(){
+
+            //Получаем что ввел пользователь
+            fn = document.getElementById('fn').value;
+            ln = document.getElementById('ln').value;
+            tel = document.getElementById('tel').value;
+            dn = document.getElementById('dn').value;
+            p1 = document.getElementById('p1').value;
+            p2 = document.getElementById('p2').value;
+
+            //формируем json
+            const json = {
+                "first_name": fn,
+                "last_name": ln,
+                "phone": tel,
+                "document_number": dn,
+                "password": p1,
+                "repeat_password": p2
+            };
+
+            //отправляем запрос на сервер
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'registr/', false);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(json));
+
+            //обработка результата от АПИ (сервера)
+            if (xhr.status != 200) {
+                // вывод ошибки
+                alert( xhr.status + ': ' + xhr.statusText );
+            } else {
+                // вывести результат (ответ сервера, чтобы бало понятно, что работает)
+                alert(xhr.responseText);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<form>
+   имя: <input type="text" name="first_name" id="fn"><br>
+   фамилия: <input type="text" name="last_name" id="ln"><br>
+    tel: <input type="text" name="phone" id="tel"><br>
+    documnet: <input type="text" name="document_number" id="dn"><br>
+    pass1: <input type="text" name="password" id="p1"><br>
+    pass2: <input type="text" name="repeat_password" id="p2"><br>
+    <input type="button" value="зарегаться" onclick="reg()">
+</form>
+
+</body>
+</html>
